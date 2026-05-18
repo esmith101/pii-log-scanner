@@ -1,0 +1,11 @@
+{
+  "name": "pii-log-scanner",
+  "description": "Security plugins for fintech and healthcare engineering teams",
+  "plugins": [
+    {
+      "name": "pii-log-scanner",
+      "path": ".",
+      "description": "Scans application log statements for PII and sensitive financial data before code reaches production."
+    }
+  ]
+}
