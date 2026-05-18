@@ -34,41 +34,40 @@ Good plugin candidates share three traits:
 
 ---
 
-### The four files to copy and modify
+### The three files to copy and modify
 
-Clone the PII scanner repo and replace these four things:
+Clone the PII scanner repo and replace these three things:
 
-**1. `skills/your-skill-name/SKILL.md`**
-This is where you spend your time. Define:
+**1. `.claude/commands/your-skill-name.md`**
+This is where you spend your time. Rename the file to match your skill (e.g. `scan-cves.md` creates `/scan-cves`). Inside, define:
 - What you're scanning for (be specific — "hardcoded secrets" is too vague; list the patterns)
 - Severity levels and what they mean at your company
 - The exact fix or action for each finding type
 - The output format (who reads this — an engineer, a compliance team, an on-call SRE?)
+- Always require an explicit path argument — let the engineer control the scope, not the agent
 
-**2. `sample/`**
-Add 2-3 real-looking files that contain the problem you're solving. Sanitize them — no actual credentials or customer data. The sample is how you demo the plugin and onboard your team.
+**2. `.claude/settings.json`** *(only if you want a hook)*
+Edit the grep pattern to match the trigger that makes sense for your workflow. `git push` is right for a pre-push scanner. `git commit` works for secrets detection. The hook outputs a `systemMessage` JSON field — that's what surfaces the warning in the Claude Code UI. You can remove this file entirely if you only need the skill on demand.
 
-**3. `.claude-plugin/plugin.json`**
-Change `name`, `description`, and `keywords`. Everything else can stay the same.
-
-**4. `hooks/hooks.json` and `scripts/check-push.sh`** *(only if you want a hook)*
-Edit the grep pattern in the shell script to match the trigger that makes sense for your workflow. `git push` is right for a pre-push scanner. `git commit` works for secrets detection. You could also remove the hook entirely and just use the skill on demand.
+**3. `sample/`**
+Replace the payment service files with 2-3 realistic examples of your problem. Sanitize them — no actual credentials or customer data. This is how you demo the plugin and onboard your team without touching production code.
 
 ---
 
-### Test it before you share it
+### Install and test it
 
 ```bash
-cd sample
-claude --plugin-dir ..
+git clone https://github.com/your-username/your-plugin.git
+cd your-plugin
+claude
 ```
 
-Type your skill name to invoke it. Verify it finds what you expect, proposes the right fixes, and stops for approval before touching anything. Iterate on `SKILL.md` until the output is exactly what you'd want a junior engineer to hand you.
+Type your skill name to invoke it. Verify it finds what you expect, proposes the right fixes, and stops for approval before touching anything. Iterate on the skill file until the output is exactly what you'd want a junior engineer to hand you.
 
-When it's ready, share the repo with your team. The install is the same two commands.
+When it's ready, share the repo with your team. The install is the same three commands.
 
 ---
 
 ### One thing to get right
 
-The quality of the skill is entirely in the specificity of `SKILL.md`. Generic instructions produce generic output. The more precisely you define what a violation looks like, what the correct fix is, and what the output format should be, the less you'll need to steer the agent during a real scan. Treat it like writing a runbook — the goal is that any engineer on your team could read it and know exactly what the agent is going to do.
+The quality of the skill is entirely in the specificity of the command file. Generic instructions produce generic output. The more precisely you define what a violation looks like, what the correct fix is, and what the output format should be, the less you'll need to steer the agent during a real scan. Treat it like writing a runbook — the goal is that any engineer on your team could read it and know exactly what the agent is going to do.
