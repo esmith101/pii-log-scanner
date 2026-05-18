@@ -1,0 +1,11 @@
+{
+  "name": "pii-log-scanner",
+  "version": "1.0.0",
+  "description": "Scans application logs for PII and sensitive financial data before code reaches production. Built for security engineers at fintech and healthcare companies.",
+  "author": {
+    "name": "Andrew Evarys"
+  },
+  "keywords": ["security", "pii", "compliance", "pci-dss", "soc2", "glba"],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}
