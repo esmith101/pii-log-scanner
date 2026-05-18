@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/check-push.sh"
+            "command": "INPUT=$(cat); COMMAND=$(echo \"$INPUT\" | python3 -c \"import sys,json; data=json.load(sys.stdin); print(data.get('command',''))\" 2>/dev/null); if echo \"$COMMAND\" | grep -qE 'git push'; then echo '' >&2; echo '⚠️  About to push — have you scanned for PII in log statements?' >&2; echo '   Run: /scan-pii to check before this push.' >&2; echo '' >&2; fi; exit 0"
           }
         ]
       }
