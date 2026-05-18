@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "INPUT=$(cat); COMMAND=$(echo \"$INPUT\" | python3 -c \"import sys,json; data=json.load(sys.stdin); print(data.get('command',''))\" 2>/dev/null); if echo \"$COMMAND\" | grep -qE 'git push'; then echo ''; echo '⚠️  About to push — have you scanned for PII in log statements?'; echo '   Run: /scan-pii to check before this push.'; echo ''; fi; exit 0"
+            "command": "if cat | grep -q 'git push'; then echo ''; echo '⚠️  About to push — have you scanned for PII in log statements?'; echo '   Run: /scan-pii to check before this push.'; echo ''; fi; exit 0"
           }
         ]
       }
