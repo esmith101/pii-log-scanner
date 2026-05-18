@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if cat | grep -q 'git push'; then echo ''; echo '⚠️  About to push — have you scanned for PII in log statements?'; echo '   Run: /scan-pii sample/ to check before this push.'; echo ''; fi; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

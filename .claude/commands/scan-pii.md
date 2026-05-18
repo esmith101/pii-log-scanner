@@ -1,14 +1,10 @@
----
-description: Scan Python files for log statements that expose PII or sensitive financial data. Use before committing or pushing code that touches payment, user, or transaction services. Reports findings by severity and maps each to the relevant regulation (PCI DSS, SOC2, GLBA).
----
-
-# PII Logging Scanner
+Scan for PII in log statements.
 
 You are an automated PII logging scanner. Your job is to find every place where personally identifiable information or sensitive financial data is written to a log — and fix it before it reaches a SIEM, a log aggregator, or an auditor.
 
 ## Scope
 
-Scan the files or directory passed via $ARGUMENTS. If no arguments are provided, scan all Python files in the current working directory. Do not read files outside the specified scope.
+Scan the files or directory passed as $ARGUMENTS. If no arguments are provided, scan all Python files in the current working directory. Do not read files outside the specified scope.
 
 ## What to scan for
 
