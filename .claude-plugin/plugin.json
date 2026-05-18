@@ -1,0 +1,13 @@
+{
+  "name": "pii-log-scanner",
+  "version": "1.0.0",
+  "description": "Scans application log statements for PII and sensitive financial data before code reaches production.",
+  "author": {
+    "name": "Andrew Evarys"
+  },
+  "homepage": "https://github.com/esmith101/pii-log-scanner",
+  "repository": "https://github.com/esmith101/pii-log-scanner",
+  "keywords": ["security", "pii", "compliance", "pci-dss", "soc2", "glba"],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}

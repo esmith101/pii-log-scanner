@@ -16,7 +16,15 @@ A Claude Code skill for security engineers at fintech and healthcare companies. 
 
 ## Install and try it in under 5 minutes
 
-### 1. Clone the repo
+### Option A: Marketplace install (when available)
+
+```
+/plugin marketplace add https://github.com/esmith101/pii-log-scanner
+```
+
+The plugin installs via the canonical `.claude-plugin/` manifest. Use this when the Claude Code marketplace install source type is supported in your version.
+
+### Option B: Direct clone (works today)
 
 ```bash
 git clone https://github.com/esmith101/pii-log-scanner.git
@@ -82,13 +90,23 @@ pii-log-scanner/
 ├── CLAUDE.md                        # Project context
 ├── .claude/
 │   ├── commands/
-│   │   └── scan-pii.md              # /scan-pii slash command
-│   └── settings.json                # Pre-push hook
+│   │   └── scan-pii.md              # /scan-pii slash command (direct clone install)
+│   └── settings.json                # Pre-push hook (direct clone install)
+├── .claude-plugin/
+│   ├── plugin.json                  # Canonical plugin manifest (marketplace install)
+│   └── marketplace.json             # Marketplace registry entry
+├── skills/
+│   └── scan-pii/
+│       └── SKILL.md                 # Skill definition (marketplace install)
+├── hooks/
+│   └── hooks.json                   # Hook definitions (marketplace install)
 └── sample/                          # Three Python services with realistic PII violations
     ├── payment_service.py           # Card numbers and CVV in logs (PCI DSS)
     ├── user_service.py              # Full SSN in logs (SOC2 CC6.7)
     └── transaction_service.py       # Account and routing numbers in logs (GLBA)
 ```
+
+Both install paths use identical skill and hook logic — the `.claude/` files are the working primitives today; the `.claude-plugin/` manifest is the canonical format for marketplace distribution.
 
 ---
 
