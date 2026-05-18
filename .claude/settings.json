@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'HOOK FIRED'; exit 0"
+            "command": "echo 'HOOK FIRED' >> /tmp/hook_test.log; exit 0"
           }
         ]
       }
