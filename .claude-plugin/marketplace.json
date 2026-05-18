@@ -1,6 +1,10 @@
 {
   "name": "pii-log-scanner",
   "description": "Security plugins for fintech and healthcare engineering teams",
+  "owner": {
+    "name": "Andrew Evarys",
+    "url": "https://github.com/esmith101"
+  },
   "plugins": [
     {
       "name": "pii-log-scanner",
