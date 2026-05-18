@@ -6,6 +6,8 @@
     "name": "Andrew Evarys"
   },
   "keywords": ["security", "pii", "compliance", "pci-dss", "soc2", "glba"],
+  "homepage": "https://github.com/esmith101/pii-log-scanner",
+  "repository": "https://github.com/esmith101/pii-log-scanner",
   "skills": "./skills/",
   "hooks": "./hooks/hooks.json"
 }
