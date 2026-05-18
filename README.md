@@ -33,6 +33,8 @@ The `/scan-pii` command and pre-push hook load automatically from `.claude/`.
 
 ### 3. Run the scan against the sample files
 
+Pass the directory you want to scan as the argument:
+
 ```
 /scan-pii sample/
 ```
